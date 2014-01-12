@@ -1,0 +1,63 @@
+xscrollemu 0.2.0
+
+Copyright(C) 2005 Eric Lathrop <eric@ericlathrop.com>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+For more details see the file COPYING
+
+
+What is xscrollemu?
+===================
+xscrollemu is a program that emulates the behavior of a scroll wheel when a
+certain mouse button is depressed. This lets users of 3-button mice scroll
+easily.
+
+By holding down the (configurable) mouse button and moving the mouse up and down
+xscrollemu will simulate scroll wheel events tricking programs into scrolling.
+
+
+Setup and usage
+===============
+After installing xscrollemu you need to take a look at your X Windows
+configuration file (usually /etc/X11/xorg.conf or /etc/X11/XF86Config). In the
+"InputDevice" section for your mouse, look for a line similar to:
+
+	Option	"Buttons" "X"
+
+where X is some number. If this number is less than 5, change it to 5. Save this
+file.
+
+Now you need to (re)start X Windows and run xscrollemu. By default xscrollemu
+uses mouse button 2, which is normally the middle mouse button. Open a program
+that will let you scroll (a web browser works), hold down button 2 and move the
+mouse around.
+
+If everything works okay, then you'll probably want to make xscrollemu start up
+along with X Windows. You can edit ~/.xinitrc or /etc/X11/xinit/xinitrc and add
+"xscrollemu&" to the beginning (but after the "#!/bin/sh").
+
+
+The -k option
+=============
+The -k option allows you to use a specified keyboard key to trigger scrolling.
+You need to give the -k option the KeySym of the trigger key. A list of KeySyms
+can be found in:
+
+	/usr/X11R6/include/X11/keysymdef.h
+
+For example to make the Windows key the scroll trigger you would run:
+
+	xscrollemu -k 0xFFEB

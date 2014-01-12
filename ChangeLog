@@ -1,0 +1,18 @@
+
+Version 0.2.0
+=============
+
+02/24/05
+
+* Added the ability to use keyboard keys to trigger scrolling instead of mouse
+  buttons. See option "-k".
+* Added a toggle mode, where the key/button toggles scroll mode (press once to
+  enable scrolling, press again to disable). See option "-T".
+
+
+Version 0.1.0
+=============
+
+02/21/05
+
+* Initial release
